@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class Employees implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
     private String Ename;
     private String job;
 
@@ -26,7 +26,7 @@ public class Employees implements Serializable{
         job=builder.job;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -39,11 +39,11 @@ public class Employees implements Serializable{
     }
 
     public static class Builder{
-        private Long id;
+        private int id;
         private String Ename;
         private String job;
 
-        public Builder(Long id){
+        public Builder(int id){
             this.id = id;
         }
 
@@ -70,14 +70,14 @@ public class Employees implements Serializable{
 
         Employees employees = (Employees) o;
 
-        if (id != null ? !id.equals(employees.id) : employees.id != null) return false;
+        if (id != employees.id) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return id;
     }
 
     @Override

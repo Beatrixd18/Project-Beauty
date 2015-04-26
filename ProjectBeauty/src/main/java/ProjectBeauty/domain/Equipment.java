@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class Equipment implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long QId;
+    private int QId;
     private String Qname;
 
     private Equipment(){
@@ -23,7 +23,7 @@ public class Equipment implements Serializable{
         Qname=builder.Qname;
     }
 
-    public Long getQId() {
+    public int getQId() {
         return QId;
     }
 
@@ -32,10 +32,10 @@ public class Equipment implements Serializable{
     }
 
     public static class Builder{
-        private Long QId;
+        private int QId;
         private String Qname;
 
-        public Builder(Long QId){
+        public Builder(int QId){
             this.QId=QId;
         }
 
@@ -56,14 +56,14 @@ public class Equipment implements Serializable{
 
         Equipment equipment = (Equipment) o;
 
-        if (QId != null ? !QId.equals(equipment.QId) : equipment.QId != null) return false;
+        if (QId != equipment.QId) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return QId != null ? QId.hashCode() : 0;
+        return QId;
     }
 
     @Override

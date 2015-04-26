@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class Customers implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long CId;
+    private int CId;
     private String Cname;
     private String Telephone;
     private String Address;
@@ -30,7 +30,7 @@ public class Customers implements Serializable{
         balance=builder.balance;
     }
 
-    public Long getCId() {
+    public int getCId() {
         return CId;
     }
 
@@ -51,13 +51,13 @@ public class Customers implements Serializable{
     }
 
     public static class Builder{
-        private Long CId;
+        private int CId;
         private String Cname;
         private String Telephone;
         private String Address;
         private double balance;
 
-        public Builder(Long CId){
+        public Builder(int CId){
             this.CId = CId;
         }
 
@@ -94,14 +94,14 @@ public class Customers implements Serializable{
 
         Customers customers = (Customers) o;
 
-        if (CId != null ? !CId.equals(customers.CId) : customers.CId != null) return false;
+        if (CId != customers.CId) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return CId != null ? CId.hashCode() : 0;
+        return CId;
     }
 
     @Override

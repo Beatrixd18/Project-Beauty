@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 public class Procedures implements Serializable{
-    private Long PId;
+    private int PId;
     private String Pname;
     private double price;
     private String Duration;
@@ -21,7 +21,7 @@ public class Procedures implements Serializable{
         Duration=builder.Duration;
     }
 
-    public Long getPId() {
+    public int getPId() {
         return PId;
     }
 
@@ -38,12 +38,12 @@ public class Procedures implements Serializable{
     }
 
     public static class Builder{
-        private Long PId;
+        private int PId;
         private String Pname;
         private double price;
         private String Duration;
 
-        public Builder(Long PId){
+        public Builder(int PId){
             this.PId=PId;
         }
 
@@ -74,14 +74,14 @@ public class Procedures implements Serializable{
 
         Procedures that = (Procedures) o;
 
-        if (PId != null ? !PId.equals(that.PId) : that.PId != null) return false;
+        if (PId != that.PId) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return PId != null ? PId.hashCode() : 0;
+        return PId;
     }
 
     @Override
