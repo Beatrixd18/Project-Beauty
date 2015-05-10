@@ -11,7 +11,8 @@ import java.io.Serializable;
 public class Invoice implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long IId;
+    private int IId;
+    private int CId;
     private int invoiceNum;
     private double fee;
 
@@ -20,12 +21,17 @@ public class Invoice implements Serializable{
     }
 
     public Invoice(Builder builder){
-        IId=builder.IId;
-        invoiceNum=builder.invoiceNum;
-        fee=builder.fee;
+        IId = builder.IId;
+        CId = builder.CId;
+        invoiceNum = builder.invoiceNum;
+        fee = builder.fee;
     }
-    public Long getIId() {
+    public int getIId() {
         return IId;
+    }
+
+    public int getCId() {
+        return CId;
     }
 
     public int getInvoiceNum() {
@@ -37,21 +43,27 @@ public class Invoice implements Serializable{
     }
 
     public static class Builder{
-        private Long IId;
+        private int IId;
+        private int CId;
         private int invoiceNum;
         private double fee;
 
-        public Builder(Long IId){
+        public Builder(int IId){
             this.IId=IId;
         }
 
+        public Builder CId(int value){
+            this.CId = value;
+            return this;
+        }
+
         public Builder invoiceNum(int value){
-            this.invoiceNum=value;
+            this.invoiceNum = value;
             return this;
         }
 
         public Builder fee(double value){
-            this.fee=value;
+            this.fee = value;
             return this;
         }
 
@@ -68,14 +80,14 @@ public class Invoice implements Serializable{
 
         Invoice invoice = (Invoice) o;
 
-        if (IId != null ? !IId.equals(invoice.IId) : invoice.IId != null) return false;
+        if (IId != invoice.IId) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return IId != null ? IId.hashCode() : 0;
+        return IId;
     }
 
     @Override

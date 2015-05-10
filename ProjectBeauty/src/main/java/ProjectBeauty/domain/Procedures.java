@@ -1,12 +1,15 @@
 package ProjectBeauty.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
 
 @Entity
 public class Procedures implements Serializable{
     private int PId;
     private String Pname;
+    @OneToMany
+    private int QId;
     private double price;
     private String Duration;
 
@@ -15,10 +18,11 @@ public class Procedures implements Serializable{
     }
 
     public Procedures(Builder builder){
-        PId=builder.PId;
-        Pname=builder.Pname;
-        price=builder.price;
-        Duration=builder.Duration;
+        PId = builder.PId;
+        Pname = builder.Pname;
+        QId = builder.QId;
+        price = builder.price;
+        Duration = builder.Duration;
     }
 
     public int getPId() {
@@ -27,6 +31,10 @@ public class Procedures implements Serializable{
 
     public String getPname() {
         return Pname;
+    }
+
+    public int getQId() {
+        return QId;
     }
 
     public double getPrice() {
@@ -40,6 +48,7 @@ public class Procedures implements Serializable{
     public static class Builder{
         private int PId;
         private String Pname;
+        private int QId;
         private double price;
         private String Duration;
 
@@ -48,17 +57,22 @@ public class Procedures implements Serializable{
         }
 
         public Builder Pname(String value){
-            this.Pname=value;
+            this.Pname = value;
+            return this;
+        }
+
+        public Builder QId(int value){
+            this.QId = value;
             return this;
         }
 
         public Builder price(double value){
-            this.price=value;
+            this.price = value;
             return this;
         }
 
         public Builder Duration(String value){
-            this.Duration=value;
+            this.Duration = value;
             return this;
         }
 
@@ -89,6 +103,7 @@ public class Procedures implements Serializable{
         return "Procedures{" +
                 "PId=" + PId +
                 ", Pname='" + Pname + '\'' +
+                ", QId=" + QId +
                 ", price=" + price +
                 ", Duration='" + Duration + '\'' +
                 '}';

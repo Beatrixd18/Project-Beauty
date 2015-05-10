@@ -3,15 +3,15 @@ package ProjectBeauty.domain;
 
 import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 public class Customers implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @OneToMany
+    //@JoinColumn(name="CustId")
     private int CId;
     private String Cname;
     private String Telephone;
