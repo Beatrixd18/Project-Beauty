@@ -1,10 +1,12 @@
-package ProjectBeauty.conf.FactoryTests;
+package ProjectBeauty.RepositoryTest;
+
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CustomerFactoryTest {
+public class CustomerRepoTest {
+
     @Before
     public void setUp() throws Exception {
 
@@ -12,7 +14,8 @@ public class CustomerFactoryTest {
     }
 
     @Test
-    public void testCreateCustomer() throws Exception {
+    public void testCreate() throws Exception {
+
 
 
     }
